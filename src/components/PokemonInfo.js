@@ -4,7 +4,7 @@ import { ThemeContext } from "../App";
 
 const PokemonInfo = () => {
 
-  const API_URL = "https://pokeapi.co/api/v2/pokemon/pikachu";
+  const API_URL = "https://pokeapi.co/api/v2/pokemon/charmander";
 
   const [info] = useFetch(API_URL);
 
@@ -12,17 +12,15 @@ const PokemonInfo = () => {
 
   return (
     <div style={{ background: theme.background, color: theme.fontColor }}>
-      <p>Información de Pikachu:</p>
+      <p>Character {info ? info.name : null}:</p>
 
       {info ?
         <div>
-          <p>Tema actual: {theme.name}</p>
-          <p>Nombre: {info.name}</p>
-          <p>Altura: {info.height}</p>
-          <p>Peso: {info.weight}</p>
-          <img alt="Imagen de pikachu" src={info.sprites.front_default} />
+          <p>Height: {info.height}</p>
+          <p>Weight: {info.weight}</p>
+          <img src={info.sprites.front_default} alt={theme.name} />
         </div>
-        : <p>Cargando...</p>
+        : <p>Beep boop...</p>
       }
 
     </div>

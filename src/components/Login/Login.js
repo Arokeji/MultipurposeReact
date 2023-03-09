@@ -29,23 +29,25 @@ const Login = () => {
         setError(null);
         login.updateUserInfo(username);
       } else {
-        setError("Contraseña incorrecta");
+        setError("Wrong password");
       }
     } else {
-      setError("Usuario inexistente");
+      setError("User not found");
     }
   }
 
   return (
       <div style={{ background: theme.background, color: theme.fontColor }}>
-        <p>Usuario: {login.currentUsername}</p>
+        <p>
+          {login.currentUsername ? ("Logged as " + login.currentUsername) : "Not logged yet"}
+          </p>
 
         {login.currentUsername ?
           <button onClick={() => login.updateUserInfo(null)}>Logout</button> :
 
           <form onSubmit={doLogin}>
-            <p><input ref={usernameRef} placeholder="Nombre de usuario" type="text" /></p>
-            <p><input ref={passwordRef} placeholder="Contraseña" type="password" /></p>
+            <p><input ref={usernameRef} placeholder="Username" type="text" /></p>
+            <p><input ref={passwordRef} placeholder="Password" type="password" /></p>
 
             <button>Login</button>
 

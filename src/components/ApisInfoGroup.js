@@ -33,15 +33,15 @@ const ApisInfoGroup = () => {
   }, []);
 
   return (
-    <div ref={myRef} style={{ 'borderTop': '1px solid red' }}>
+    <div ref={myRef}>
 
       {login.currentUsername ?
         (showComponents ?
-          <React.Suspense fallback={<p>Cargando...</p>}>
+          <React.Suspense fallback={<p>Beep boop...</p>}>
             <PokemonInfoLazy></PokemonInfoLazy>
             <StarwarsInfoLazy></StarwarsInfoLazy>
           </React.Suspense> :
-          <p>Componentes ocultos</p>
+          <p>Hidden components</p>
       ) : 
           <div style={{ background: theme.background, color: theme.fontColor }}>
             <p>Debes hacer login para ver el resultado de las API</p>

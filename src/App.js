@@ -11,12 +11,12 @@ export const LoginContext = React.createContext();
 
 const themes = {
   light: {
-    name: "Claro",
+    name: "Light",
     background: "#FFF",
     fontColor: "#000",
   },
   dark: {
-    name: "Oscuro",
+    name: "Dark",
     background: "#000",
     fontColor: "#FFF",
   }
@@ -47,7 +47,7 @@ function App() {
     <LoginContext.Provider value={loginProviderValue}>
       <div className="App">
 
-        <h2>Componente lazy:</h2>
+        <h2>Lazy component:</h2>
         <ThemeContext.Provider value={themeState}>
           <React.Suspense fallback={<div>Cargando...</div>}>
             <LongTextLazy></LongTextLazy>
@@ -59,8 +59,8 @@ function App() {
           <Login></Login>
         </ThemeContext.Provider>
 
-        <h2>Temas (contextos)</h2>
-        <p>Tema actual: {themeState.name}</p>
+        <h2>Themes (contexts)</h2>
+        <p>Current theme: {themeState.name}</p>
         <button onClick={() => setThemeState(themeState === themes.light ? themes.dark : themes.light)}>Cambiar tema</button>
 
         <ThemeContext.Provider value={themeState}>
@@ -78,7 +78,7 @@ function App() {
             handleDecrement={secondHandleDecrement} 
           />
         </ThemeContext.Provider>
-        <h2>Peticiones a la API</h2>
+        <h2>API Requests</h2>
 
         <ThemeContext.Provider value={themeState}>
           <ApisInfoGroup></ApisInfoGroup>

@@ -1,13 +1,10 @@
 import React from "react";
 import useFetch from "../hooks/useFetch";
 import { ThemeContext } from "../App";
-import { LoginContext } from "../App";
 
 const StarwarsInfo = () => {
 
-  const login = React.useContext(LoginContext);
-
-  const API_URL = "https://swapi.dev/api/people/1";
+  const API_URL = "https://swapi.dev/api/people/3";
 
   const [info] = useFetch(API_URL);
 
@@ -15,21 +12,17 @@ const StarwarsInfo = () => {
 
   return (
     <div style={{ background: theme.background, color: theme.fontColor }}>
-      <p>Información de Luke Skywalker:</p>
+      <p>Character {info ? info.name : null}:</p>
 
       {info ?
         <div>
-          <p>Nombre: {info.name}</p>
-          <p>Altura: {info.height}</p>
-          <p>Peso: {info.mass}</p>
-          <p>Color de ojos: {info.eye_color}</p>
-          <p>Color de pelo: {info.hair_color}</p>
+          <p>Height: {info.height}</p>
+          <p>Weight: {info.mass}</p>
+          <p>Eyes color: {info.eye_color}</p>
+          <p>Hair color: {info.hair_color}</p>
         </div>
-        : <p>Cargando...</p>
+        : <p>Beep boop...</p>
       }
-
-      <h3>Usuario: {login.currentUsername}</h3>
-
     </div>
   );
 }
